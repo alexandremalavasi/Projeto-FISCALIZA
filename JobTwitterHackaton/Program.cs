@@ -22,9 +22,7 @@ namespace JobTwitterHackaton
 
             Timer t = new Timer(Rotina, null, 0, 15000);
 
-            //Auth.SetUserCredentials("CONSUMER_KEY", "CONSUMER_SECRET", "ACCESS_TOKEN", "ACCESS_TOKEN_SECRET");
-
-              
+           
             Console.Read();
         }
 
@@ -32,7 +30,7 @@ namespace JobTwitterHackaton
         {
             DataTable tabela = new DataTable();
 
-            MySqlConnection conn = new MySqlConnection("Server=localhost;Database=hackatontadepe;Uid=root;Pwd=root;");
+            MySqlConnection conn = new MySqlConnection("MINHA_STRING_CONEXAO");
             conn.Open();
 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -47,7 +45,7 @@ namespace JobTwitterHackaton
 
         static void InsereTweet(string id, string user_name)
         {
-            MySqlConnection conn = new MySqlConnection("Server=localhost;Database=hackatontadepe;Uid=root;Pwd=root;");
+            MySqlConnection conn = new MySqlConnection("MINHA_STRING_CONEXAO");
             conn.Open();
 
             MySqlCommand cmd = new MySqlCommand("INSERT INTO TWEET (id, username) VALUES('"+ id +"','"+ user_name +"')", conn);
@@ -60,13 +58,10 @@ namespace JobTwitterHackaton
             try
             {
 
-                Auth.SetUserCredentials("2JFR4v7euBTTMRXxkzZ28AdYr",
-                                       "TYSkAoQvESJn2mQg0F73wwIoAh81ilJAfDcgix2I05PuJAf7ZM",
-                                       "972539919737479169-yCip0gZvfX7dOWh7QeiLLaxFthpZCRM",
-                                       "FEq98QKwBdUCRUjykfafnbtNyBsyh0cM9QtWcCZS1Qnpq");
+                Auth.SetUserCredentials("CONSUMER_KEY", "CONSUMER_SECRET", "ACCESS_TOKEN", "ACCESS_TOKEN_SECRET");
 
                 // Get json directly
-                var tweetsJson = SearchJson.SearchTweets("testetadepe");
+                var tweetsJson = SearchJson.SearchTweets("MINHA_PALAVRA_CHAVE");
 
                 // Get json from ITweet objects
                 var tweets = Search.SearchTweets("testetadepe");
@@ -97,8 +92,7 @@ namespace JobTwitterHackaton
             {
 
             }
-            // Tweet.PublishTweet("Meu nome é Liza! ");
-            Console.WriteLine("ACABOU");
+            
         }
     }
 }
