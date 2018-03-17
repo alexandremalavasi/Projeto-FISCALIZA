@@ -1,0 +1,42 @@
+INEP_Temp:
+CrossTable(Classe, [Quantidade Media], 9)
+LOAD Ano,
+     [Código do Município]		as MunicipioIBGE, 
+     [Código da Escola], 
+     [Nome da Escola], 
+     Localização, 
+     [Dependência Administrativa], 
+     Creche, 
+     [Pré-Escola], 
+     [1º Ano], 
+     [2° ano], 
+     [3° ano], 
+     [4° ano], 
+     [5° ano], 
+     [6° ano], 
+     [7° ano], 
+     [8° ano], 
+     [9° ano], 
+     [Turmas Unificadas 1], 
+     [1ª série], 
+     [2ª série], 
+     [3ª série], 
+     [4ª série], 
+     [Não-Seriado], 
+     F27
+FROM
+[C:\Users\Nicolasbr\Desktop\Qlik\ATU_ESCOLAS_2016.xlsx]
+(ooxml, embedded labels, header is 7 lines, table is ESCOLA);
+
+
+INEP:
+NoConcatenate
+LOAD Ano,
+	 MunicipioIBGE,
+	 Classe,
+	 avg([Quantidade Media])	as [Quantidade Media]
+Resident INEP_Temp
+Group by Ano, MunicipioIBGE, Classe;
+
+drop table INEP_Temp;
+	 

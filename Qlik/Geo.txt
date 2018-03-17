@@ -1,0 +1,12 @@
+Geo:
+LOAD Distinct
+	 Região,
+	 UF, 
+     [Código do Município]		as MunicipioIBGE, 
+     upper([Nome do Município])	as [Nome do Município]
+FROM
+[C:\Users\Nicolasbr\Desktop\Qlik\ATU_ESCOLAS_2016.xlsx]
+(ooxml, embedded labels, header is 7 lines, table is ESCOLA)
+where not IsNull([Código do Município]);
+
+let vLinhas_Geo = NoOfRows('Geo');
